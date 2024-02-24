@@ -30,13 +30,7 @@ Paste this into the console (while being logged in):
 
 ```js
 let wpRequire;
-let sym = Symbol()
-let chunk = [[sym], {}, (x) => (wpRequire = x)];
-window.webpackChunkdiscord_app.push(chunk);
-window.webpackChunkdiscord_app.pop();
-webpackChunkdiscord_app.splice(webpackChunkdiscord_app.indexOf(chunk), 1);
-delete wpRequire.c[sym]
-delete wpRequire.m[sym]
+window.webpackChunkdiscord_app.push([[Symbol()], {}, (x) => (wpRequire = x)]);
 for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x)) {
     if (module.default && module.default['getToken'] !== undefined)
         copy(module.default.getToken())
@@ -61,14 +55,7 @@ This will trick your client into thinking that you are a staff member of Discord
 
 ```js
 let wpRequire;
-let sym = Symbol()
-let chunk = [[sym], {}, (x) => (wpRequire = x)];
-window.webpackChunkdiscord_app.push(chunk);
-window.webpackChunkdiscord_app.pop();
-webpackChunkdiscord_app.splice(webpackChunkdiscord_app.indexOf(chunk), 1);
-delete wpRequire.c[sym]
-delete wpRequire.m[sym]
-
+window.webpackChunkdiscord_app.push([[Symbol()], {}, (x) => (wpRequire = x)]);
 let user = Object.values(wpRequire.c).find((x)=> x?.exports?.default?.getCurrentUser && x?.exports?.default?._dispatcher?._actionHandlers).exports.default
 module = Object.values(user._dispatcher._actionHandlers._dependencyGraph.nodes);
 
@@ -94,13 +81,7 @@ Spoofs your Discord suffix to show that you have Discord's `BOT` tag. (Only visi
 Bot tag code:
 ```js
 let wpRequire;
-let sym = Symbol()
-let chunk = [[sym], {}, (x) => (wpRequire = x)];
-window.webpackChunkdiscord_app.push(chunk);
-window.webpackChunkdiscord_app.pop();
-webpackChunkdiscord_app.splice(webpackChunkdiscord_app.indexOf(chunk), 1);
-delete wpRequire.c[sym]
-delete wpRequire.m[sym]
+window.webpackChunkdiscord_app.push([[Symbol()], {}, (x) => (wpRequire = x)]);
 for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x)) {
     if (module.default && module.default['getCurrentUser'] !== undefined)
         module.default.getCurrentUser().bot = true
