@@ -50,6 +50,39 @@ Please be careful when pasting the token, sending it to someone is like giving a
 </details>
 <br>
 
+### Enable Staff Mode
+
+Enables some hidden features and sets your client to staff mode.
+
+<details>
+<summary>Expand</summary>
+ 
+This will trick your client into thinking that you are a staff member of Discord (by modifiying certain flags) and will also allow you to access the experiments tab, developer options, and more. (In these menus you can get unreleased Discord updates, emulate a different client, generate build overrides and more.)
+
+```js
+let wpRequire;
+let sym = Symbol()
+let chunk = [[sym], {}, (x) => (wpRequire = x)];
+window.webpackChunkdiscord_app.push(chunk);
+window.webpackChunkdiscord_app.pop();
+webpackChunkdiscord_app.splice(webpackChunkdiscord_app.indexOf(chunk), 1);
+delete wpRequire.c[sym]
+delete wpRequire.m[sym]
+
+let user = Object.values(wpRequire.c).find((x)=> x?.exports?.default?.getCurrentUser && x?.exports?.default?._dispatcher?._actionHandlers).exports.default
+module = Object.values(user._dispatcher._actionHandlers._dependencyGraph.nodes);
+
+user.getCurrentUser().flags |= 1;
+module.find((x)=>x.name === "DeveloperExperimentStore").actionHandler["CONNECTION_OPEN"]();
+try {module.find((x)=>x.name === "ExperimentStore").actionHandler["OVERLAY_INITIALIZE"]({user:{flags: 1}})} catch {}
+module.find((x)=>x.name === "ExperimentStore").storeDidChange()
+```
+<br>
+
+</details>
+<br>
+
+
 
 ### Bot Tag
 
