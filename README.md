@@ -91,6 +91,25 @@ for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports)
 </details>
 <br>
 
+### Create friend invite
+
+Makes an invite to be your friend, like a server invite but when they accept it friends you instantly
+
+<details>
+<summary>Expand</summary>
+
+friend invite code:
+```js
+let wpRequire;
+window.webpackChunkdiscord_app.push([[Symbol()], {}, (x) => (wpRequire = x)]);
+for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x)) {
+    if (module.default && module.default['createFriendInvite'] !== undefined)
+        copy("https://discord.gg/" + (1, await module.default.createFriendInvite()).code)
+}
+```
+<br>
+</details>
+<br>
 
 ### Easy Edit Mode
 
