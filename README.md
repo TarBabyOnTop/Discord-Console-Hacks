@@ -69,7 +69,33 @@ module.find((x)=>x.name === "ExperimentStore").storeDidChange()
 </details>
 <br>
 
+### Send Bot message
 
+Makes clyde say whatever you want (only visible to you)
+
+<details>
+<summary>Expand</summary>
+
+Bot tag code:
+```js
+let MESSAGE_TO_SEND = 'bobs';
+
+(()=>{
+    let wpRequire;
+    window.webpackChunkdiscord_app.push([[Symbol()], {}, (x) => (wpRequire = x)]);
+    let Flux;
+    for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x)) {
+        if (module.default && module.default['sendBotMessage'] !== undefined) {
+            ((mod)=>{
+                mod.sendBotMessage(window.location.pathname.slice(10).split('/')[1], MESSAGE_TO_SEND)
+            })(module.default)
+        }      
+    }
+})()
+```
+<br>
+</details>
+<br>
 
 ### Bot Tag
 
@@ -114,6 +140,22 @@ code:
         }      
     }
 })()
+```
+<br>
+</details>
+<br>
+
+### All roles (visual)
+
+Visually gives you all roles in a server, this one is minified out of embaressment for how bad the code is.<br>
+if it doesn't work, try it again (idk why but it works)
+
+<details>
+<summary>Expand</summary>
+
+code:
+```js
+(()=>{let e,t,d,l;window.webpackChunkdiscord_app.push([[Symbol()],{},t=>e=t]);for(const r of Object.keys(e.c).map((t=>e.c[t].exports)).filter((e=>e)))r.default&&void 0!==r.default.getSelfMember&&(r.default,l=r.default),void 0!==r.Store&&void 0!==r.Dispatcher&&(e=>{let r=t=>e.Store.getAll().find((d=>e.Store.prototype.getName.call(d)===t));t=r("GuildStore").getGuild(r("SelectedGuildStore").getGuildId()),d=r("UserStore").getCurrentUser().id,Object.values(t.roles).forEach((e=>{l.getMembers(t.id).find((e=>e.userId==d)).roles.push(e.id)}))})(r.default)})();
 ```
 <br>
 </details>
