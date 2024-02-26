@@ -91,6 +91,34 @@ for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports)
 </details>
 <br>
 
+### @@everyone bug
+
+Sends @@everyone instead of @everyone (doesnt actually ping)
+
+<details>
+<summary>Expand</summary>
+
+code:
+```js
+(()=>{
+    let wpRequire;
+    window.webpackChunkdiscord_app.push([[Symbol()], {}, (x) => (wpRequire = x)]);
+    let Flux;
+    for (const module of Object.keys(wpRequire.c).map((x) => wpRequire.c[x].exports).filter((x) => x)) {
+        if (module['Store'] !== undefined && module['Dispatcher'] !== undefined) {
+            ((Flux)=>{
+                let getStore = (name) => { return Flux.Store.getAll().find(store => Flux.Store.prototype.getName.call(store) === name) }
+                let role = Object.values(getStore("GuildStore").getGuild(getStore("SelectedGuildStore").getGuildId()).roles).at(-1)
+                console.log(`<@&${role.id}>`)
+            })(module.default)
+        }      
+    }
+})()
+```
+<br>
+</details>
+<br>
+
 ### Create friend invite
 
 Makes an invite to be your friend, like a server invite but when they accept it friends you instantly
